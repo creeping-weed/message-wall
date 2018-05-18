@@ -1,0 +1,10 @@
+ CREATE TABLE text(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(30) NOT NULL,
+    theme VARCHAR(100) NOT NULL,
+    content VARCHAR(300) NOT NULL,
+    date DATE,
+    PRIMARY KEY ( id )
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+insert into text(id,name,theme,content,date)
+    values(1,'会飞的鱼','去哪旅行','路途遥远，不知道去哪旅行，你有好的推荐吗？',now());

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    ul li{
+      list-style: none;
+    }
+    a{
+      text-decoration: none;
+    }
+    body {
+      margin: 0 auto;
+      padding: 0px;
+      font-size: 12px;
+      background: url(images/bg.gif) repeat center 36px;
+      text-align: center;
+      /*background-color: #c30230;*/
+    }
+    h3{
+      font-size: 20px;
+      line-height: 40px;
+      height: 40px;
+      padding: 0;
+      margin: 0 auto;
+      width: 960px;
+      background-color: rgba(255, 83, 20, 0.9);
+    }
+    #content {
+      margin: 0 auto;
+      width: 960px;
+      background: url(images/content_bg.jpg) no-repeat left top;
+      height: 580px;
+      position: relative;
+    }
+
+    #content .tip1 {
+      position: absolute;
+      width: 227px;
+      left: 0px;
+      top: 0px;
+    }
+
+    #content .tip1 .tip_h {
+      background: url(images/tip1_h.gif) no-repeat left top;
+    }
+
+    #content .tip1 .tip_h {
+      width: 227px;
+      padding-top: 45px;
+      height: 23px;
+      text-align: left;
+      cursor: move;
+    }
+
+    #content .tip1 .tip_c {
+      background: url(images/tip1_c.gif) repeat-y;
+    }
+
+    #content .tip1 .tip_c {
+      width: 200px;
+      padding-left: 12px;
+      padding-right: 15px;
+      min-height: 40px;
+      text-align: left;
+      line-height: 20px;
+      max-height: 160px;
+      word-wrap: break-word;
+      word-break: break-all;
+      overflow: hidden;
+    }
+
+    #content .tip1 .tip_f {
+      background: url(images/tip1_f.gif) no-repeat left top;
+    }
+
+    #content .tip1 .tip_f {
+      width: 227px;
+      height: 53px;
+      padding-top: 20px;
+    }
+
+    #content .close {
+      float: left;
+      font-size: 12px;
+      cursor: pointer;
+      color: #000000;
+    }
+
+    .clr {
+      clear: both;
+      overflow: auto;
+      display: block;
+      height: 0px;
+    }
+
+    #content .icon {
+      float: left;
+      width: 35px;
+      padding-left: 15px;
+      height: 35px;
+      text-align: center;
+    }
+
+    #content .name {
+      float: right;
+      padding-right: 15px;
+      text-align: right;
+      font-size: 14px;
+      line-height: 35px;
+      color: #C0F;
+    }
+    #content .num {
+      float: left;
+      padding-left: 7px;
+      width: 195px;
+    }
+    .foot{
+      height: 40px;
+      padding: 0;
+      margin: 0 auto;
+      width: 960px;
+      background-color: rgba(0,191,255,0.7);
+    }
+    .foot a{
+      font-size: 20px;
+      line-height: 40px;
+      display: block;
+      color: black;
+    }
+    .foot:hover{
+      background-color: rgba(0,191,255,0.9);
+    }
+    .model{
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0,0,0,0.6);
+      position: absolute;
+      top: 0;
+      left: 0;
+      text-align: left;
+      display: none;
+      z-index: 9999;
+    }
+    .model .model_add,
+    .model .model_revise{
+      height: 260px;
+      width: 400px;
+      margin: 100px auto;
+      background-color: #fff;
+      border-radius: 5px;
+      overflow: hidden;
+      display: none;
+    }
+    .model .model_add h4,
+    .model .model_revise h4{
+      height: 30px;
+      line-height: 30px;
+      font-size: 18px;
+      margin: 0;
+      padding: 0;
+      border-bottom: 1px solid #999;
+      background-color: #ff6d0b;
+      text-align: center;
+    }
+    .model_add .body,
+    .model_revise .body{
+      padding: 0 10px;
+    }
+    .model_add ul li,
+    .model_revise ul li{
+      padding: 5px 0;
+    }
+    .model_add ul li input,
+    .model_revise ul li input{
+      padding: 5px;
+      border: 1px solid #ddd;
+      width: 260px;
+    }
+    .model_add ul li  textarea,
+    .model_revise ul li  textarea{
+      border: 1px solid #ddd;
+    }
+    .model_add ul li  button,
+    .model_revise ul li  button{
+      margin: 0 10px;
+      padding: 5px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .model_add ul li button:first-child,
+    .model_revise ul li button:first-child{
+      background-color: rgba(255,36,105,0.6);
+    }
+    .model_add ul li button:first-child:hover,
+    .model_revise ul li button:first-child:hover{
+      background-color: rgba(255,36,105,1);
+    }
+    .model_add ul li  button:last-child,
+    .model_revise ul li  button:last-child{
+       background-color: rgba(26,236,156,0.6);
+     }
+    .model_add ul li  button:last-child:hover,
+    .model_revise ul li  button:last-child:hover{
+      background-color: rgba(26,236,156,1);
+    }
+
+    .model .model_delete{
+      height: 80px;
+      width: 200px;
+      margin: 200px auto;
+      background-color: #fff;
+      border-radius: 5px;
+      overflow: hidden;
+      display: none;
+    }
+    .model .model_delete h4{
+      height: 30px;
+      line-height: 30px;
+      font-size: 18px;
+      margin: 0;
+      padding: 0;
+      border-bottom: 1px solid #999;
+      background-color: #ff6d0b;
+      text-align: center;
+    }
+    .model_delete div{
+      text-align: center;
+      padding: 10px;
+    }
+    .model_delete div button{
+      margin: 0 10px;
+      padding: 5px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .model_delete div button:last-child{
+      background-color: rgba(255,36,105,0.6);
+    }
+    .model_delete div button:last-child:hover{
+      background-color: rgba(255,36,105,1);
+    }
+  </style>
+</head>
+<body>
+<h3>留言板</h3>
+<div id="content">
+
+</div>
+<div class="foot">
+  <a href="javascript:;" id="add">我也要留言</a>
+</div>
+<div class="model">
+  <div class="model_add">
+    <h4>请输入您的留言</h4>
+    <div class="body">
+      <form>
+        <ul>
+          <li>
+            <label for="username">昵称：</label>
+            <input type="text" name="username" id="username" autocomplete="off">
+          </li>
+          <li>
+            <label for="theme">主题：</label>
+            <input type="text" id="theme" name="theme" autocomplete="off">
+          </li>
+          <li>
+            <label for="text">内容：</label><br>
+            <textarea name="content" id="text" cols="42" rows="5" autocomplete="off"></textarea>
+          </li>
+          <li style="text-align: center">
+            <button class="no">取消</button>
+            <button class="yes">确定</button>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+  <div class="model_delete">
+    <h4>你确定要删除？</h4>
+    <div>
+      <button class="no">取消</button>
+      <button class="yes">确定</button>
+    </div>
+  </div>
+  <div class="model_revise">
+    <h4>请输入您要修改的内容</h4>
+    <div class="body">
+      <form>
+        <ul>
+          <li>
+            <label for="username1">昵称：</label>
+            <input type="text" name="username" id="username1" autocomplete="off">
+          </li>
+          <li>
+            <label for="theme1">主题：</label>
+            <input type="text" id="theme1" name="theme" autocomplete="off">
+          </li>
+          <li>
+            <label for="text1">内容：</label><br>
+            <textarea name="content" id="text1" cols="42" rows="5" autocomplete="off"></textarea>
+            <input type="hidden" name="id" id="id">
+          </li>
+          <li style="text-align: center">
+            <button class="no">取消</button>
+            <button class="yes">确定</button>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="library/jquery-1.12.4.min.js"></script>
+<script src="library/template-web.js"></script>
+<script type="text/html" id="tel">
+  {{each list}}
+  <div class="tip1">
+    <div class="tip_h">
+      <div class="num">第[{{$index+1}}]条 {{$value.theme}}</div>
+      <div class="close" title="删除本条留言" data-id="{{$value.id}}">×</div>
+      <div class="clr"></div>
+    </div>
+    <div class="tip_c">
+      {{$value.content}}
+      [ {{$value.date}} ]
+      <p style="text-align: right">
+        <a href="javascript:;" title="修改本条留言" id="update" data-id="{{$value.id}}" data-theme="{{$value.theme}}" data-content="{{$value.content}}" data-name="{{$value.name}}">修改</a>
+      </p>
+    </div>
+    <div class="tip_f">
+      <div class="icon">
+        <img src="images/bpic_1.gif" alt="" title="">
+      </div>
+      <div class="name">{{$value.name}}</div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  {{/each}}
+</script>
+<script>
+$(function(){
+  // 1:发送ajax请求查询数据并渲染
+    // 渲染数据
+    random();
+  //2. 添加数据（留言）
+  var $add = $('#add');
+  var $model = $('.model');
+  var $model_add = $('.model .model_add');
+  $add.on('click',function(){
+    $model.fadeIn(400);
+    $model_add.fadeIn(100);
+    var $noBtn  = $('.model_add .no');
+    var $yesBtn  = $('.model_add .yes');
+    $noBtn.off().on('click',function(e){
+      e.preventDefault();
+      $('.model_add form')[0].reset();
+      $model.fadeOut(200);
+      $model_add.fadeOut(100);
+    });
+    $yesBtn.off().on('click',function(e){
+      e.preventDefault();
+      $.ajax({
+        type: 'get',
+        url: 'php/add.php',
+        data:$('.model_add form').serialize(),
+        success:function(data){
+          if(data==1){
+            random();
+            $model.fadeOut(200);
+            $model_add.fadeOut(100);
+            $('.model_add form')[0].reset();
+          }else {
+            $('.model_add form')[0].reset();
+            alert('留言失败，请稍后再试');
+            return false;
+          }
+        }
+      });
+    })
+  });
+// 3:删除留言
+  var $model_delete = $('.model .model_delete');
+  $('#content').on('click','.tip_h .close',function(e){
+      $model.fadeIn(200);
+      $model_delete.fadeIn(100);
+      e.stopImmediatePropagation();
+    // 获取确定与取消按钮
+      var yesBtn = $('.model_delete .yes');
+      var noBtn = $('.model_delete .no');
+      noBtn.off().on('click',function(){
+          $model_delete.fadeOut(100);
+          $model.fadeOut(200);
+      });
+      // 点击确定删除本条数据
+      var id = this.dataset.id;
+      yesBtn.off().on('click',function(){
+          $.ajax({
+              type: 'get',
+              url: 'php/delete.php',
+              data: {
+                  id:id
+              },
+              success: function(data){
+                  console.log(data);
+                  random();
+                  $model_delete.fadeOut(100);
+                  $model.fadeOut(200);
+              }
+          })
+      })
+  });
+//4:修改留言
+  var $model_revise = $('.model .model_revise');
+  $("#content").on('click','#update',function(){
+      // 获取数据并填入文本框
+      var dataset = this.dataset;
+      $('#username1').val(dataset.name);
+      $('#theme1').val(dataset.theme);
+      $('#text1').val(dataset.content);
+      $('#id').val(dataset.id);
+      $model.fadeIn(200);
+      $model_revise.fadeIn(100);
+      // 获取确定与取消按钮
+      var yesBtn = $('.model_revise .yes');
+      var noBtn = $('.model_revise .no');
+      noBtn.off().on('click',function(e){
+          e.preventDefault();
+          $model_revise.fadeOut(100);
+          $model.fadeOut(200);
+      });
+      // 点击确定按钮发送ajax请求，并渲染
+      yesBtn.off().on('click',function(e){
+          e.preventDefault();
+          $.ajax({
+              type: 'get',
+              url: 'php/revise.php',
+              data:$('.model_revise form').serialize(),
+              success:function(data){
+                  if(data==1){
+                      random();
+                      $model.fadeOut(200);
+                      $model_revise.fadeOut(100);
+                  }else {
+                      alert('修改失败，请稍后再试');
+                      return false;
+                  }
+              }
+          });
+      })
+  });
+//5:z-index
+  var zIndex=0;
+  $('#content').on('click','.tip_h',function(){
+    this.parentNode.style.zIndex=++zIndex;
+  });
+// 渲染数据函数封装
+    function random(){
+        var $content = $('#content');
+        $.ajax({
+            url: 'php/query.php',
+            type: 'post',
+            data:'',
+            success:function(data){
+                var message = JSON.parse(data);
+                if(message.message&&message.message==400){
+                    alert('数据繁忙！请稍后再试');
+                    return false;
+                }
+                var html = template('tel',{list:message});
+                $content.html(html);
+                // 随机div的位置
+                for(var i = 0; i < message.length; i++) {
+                    //2.1 随机位置
+                    var x = parseInt(Math.random() * 700);
+                    var y = parseInt(Math.random() * 380);
+                    $content.children().eq(i).css({
+                        left: x,
+                        top: y
+                    })
+                }
+            }
+        })
+    }
+});
+
+</script>
+
+</body>
+</html>
